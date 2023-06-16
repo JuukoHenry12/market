@@ -1,0 +1,62 @@
+const mongoose = require('mongoose');
+const ProductSchema =new  mongoose.Schema({
+    name:{
+         type:String,
+         require:true
+    },
+    description:{
+         type:String,
+         require:true,
+    },
+    price:{
+        type:Number,
+        required:true
+    },
+    category:{
+        type:String,
+        required:true
+    },
+    age:{
+        type:Number,
+        require:true
+    },
+    images:{
+        type:Array,
+        default:[],
+        required:true
+
+    },
+    billAvailable:{
+        type:Boolean,
+        default:false,
+        required:true
+    },
+    warrantAvailable:{
+        type:Boolean,
+        default:false,
+        required:true
+    },
+    accessoriesAvailable:{
+        type:Boolean,
+        default:false,
+        required:true
+    },
+    boxAvailable:{
+        type:Boolean,
+        default:false
+    },
+    seller:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"users",
+        required:true
+    },
+    status:{
+        type:String,
+        default:"pendings",
+        required:true
+    }
+},{
+    timestamps:true,
+})
+
+module.exports =mongoose.model("Products",ProductSchema)
